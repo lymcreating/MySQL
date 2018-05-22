@@ -1,32 +1,26 @@
-CREATE DATABASE mysql_shiyan;
+CREATE DATABASE gradesystem;
 
-use mysql_shiyan;
+use gradesystem;
 
-CREATE TABLE department
+CREATE TABLE student
 (
-  dpt_name   CHAR(20) NOT NULL,
-  people_num INT(10) DEFAULT '10',
-  CONSTRAINT dpt_pk PRIMARY KEY (dpt_name)
+  sid    INT(10) PRIMARY KEY,
+  sname  CHAR(20),
+  gender CHAR(20) NOT NULL
  );
 
-CREATE TABLE employee
+CREATE TABLE course
 (
-  id      INT(10) PRIMARY KEY,
-  name    CHAR(20),
-  age     INT(10),
-  salary  INT(10) NOT NULL,
-  phone   INT(12) NOT NULL,
-  in_dpt  CHAR(20) NOT NULL,
-  UNIQUE  (phone),
-  CONSTRAINT emp_fk FOREIGN KEY (in_dpt) REFERENCES department(dpt_name)
+  cid     INT(10) PRIMARY KEY,
+  cname   CHAR(20), 
  );
  
-CREATE TABLE project
+CREATE TABLE mark
 (
-  proj_num   INT(10) NOT NULL,
-  proj_name  CHAR(20) NOT NULL,
-  start_date DATE NOT NULL,
-  end_date   DATE DEFAULT '2015-04-01',
+  mid    INT(10) PRIMARY KEY,
+  sid    INT(10) NOT NULL,
+  cid    INT(10) NOT NULL,
+  score  CHAR(20) ,
   of_dpt     CHAR(20) REFERENCES department(dpt_name),
   CONSTRAINT proj_pk PRIMARY KEY (proj_num,proj_name)
 );
