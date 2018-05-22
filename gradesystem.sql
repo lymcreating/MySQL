@@ -20,7 +20,7 @@ CREATE TABLE mark
   mid    INT(10) PRIMARY KEY,
   sid    INT(10) NOT NULL,
   cid    INT(10) NOT NULL,
-  score  CHAR(20) ,
-  of_dpt     CHAR(20) REFERENCES department(dpt_name),
-  CONSTRAINT proj_pk PRIMARY KEY (proj_num,proj_name)
+  score  INT(10) NOT NULL,
+  CONSTRAINT mar_fk FOREIGN KEY (sid) REFERENCES student(sid),
+  CONSTRAINT mar_fk FOREIGN KEY (cid) REFERENCES course(cid),
 );
